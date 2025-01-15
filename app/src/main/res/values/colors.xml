@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#F6F1F1</color>
+    <color name="mediumGrin">#006400</color>
+    <color name="title">#99101A18</color>
+    <color name="button">#008000</color>
+    <color name="input">#8B0000</color>
+</resources>

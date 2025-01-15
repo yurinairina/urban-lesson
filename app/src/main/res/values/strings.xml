@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Calculation</string>
+    <string name="exsit">EXSIT</string>
+    <string name="reset">RESET</string>
+    <string name="texts">Калькулятор Времени</string>
+    <string name="result">Результат</string>
+</resources>
