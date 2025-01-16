@@ -1,5 +1,4 @@
 package com.example.a1toolbar
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -8,10 +7,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var toolbarMain: Toolbar
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var bottonDifBTN: Button
     private lateinit var resultTV: TextView
 
-    //@Suppress ("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //enableEdgeToEdge()
@@ -41,22 +41,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         resultTV = findViewById(R.id.resultTV)
         bottonSumBTN.setOnClickListener(this)
         bottonDifBTN.setOnClickListener(this)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
 
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-          val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-           v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-           insets
-       }
-  override  fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        }
+        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
             menuInflater.inflate(R.menu.menu_main, menu)
             return true
         }
 
-      fun onOptionsItemSelected(item: MenuItem): Boolean {
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.resertMenuMain -> {
                     firstOperandET.text.clear()
                     secondOperandET.text.clear()
+
                     resultTV.text = "Результат"
 
                     resultTV.setTextColor(this.getResources().getColor(R.color.input))
