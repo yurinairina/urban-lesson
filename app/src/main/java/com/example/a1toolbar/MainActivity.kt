@@ -49,12 +49,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             insets
 
         }
-        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        fun onCreateOptionsMenu(menu: Menu?): Boolean {
             menuInflater.inflate(R.menu.menu_main, menu)
             return true
         }
 
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        fun onOptionsItemSelected(item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.resertMenuMain -> {
                     firstOperandET.text.clear()
