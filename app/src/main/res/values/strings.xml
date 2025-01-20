@@ -4,4 +4,6 @@
     <string name="reset">RESET</string>
     <string name="texts">Калькулятор Времени</string>
     <string name="result">Результат</string>
+    <string name="title_text">Калькулятор времени</string>
+    <string name="version_text">Версия 2.0</string>
 </resources>

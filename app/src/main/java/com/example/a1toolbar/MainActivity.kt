@@ -1,4 +1,5 @@
 package com.example.a1toolbar
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,57 +10,50 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-
 class MainActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var toolbarMain: Toolbar
+    private lateinit var toolbarMain:  androidx.appcompat.widget.Toolbar
     private lateinit var firstOperandET: EditText
     private lateinit var secondOperandET: EditText
     private lateinit var bottonSumBTN: Button
     private lateinit var bottonDifBTN: Button
     private lateinit var resultTV: TextView
 
+    @Suppress ("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
         toolbarMain = findViewById(R.id.toolbarMain)
         setSupportActionBar(toolbarMain)
-        title = "Калькулятор времени"
-        toolbarMain.subtitle = "Версия 2.0"
+        title = getString(R.string.title_text)
+        toolbarMain.subtitle = getString(R.string.version_text)
         toolbarMain.setLogo(R.drawable.calcul)
+        toolbarMain.titleMarginStart = 50
 
         firstOperandET = findViewById(R.id.firstOperandET)
         secondOperandET = findViewById(R.id.secondOperandET)
+        resultTV = findViewById(R.id.resultTV)
 
         bottonSumBTN = findViewById(R.id.bottonSumBTN)
         bottonDifBTN = findViewById(R.id.bottonDifBTN)
 
-        resultTV = findViewById(R.id.resultTV)
         bottonSumBTN.setOnClickListener(this)
         bottonDifBTN.setOnClickListener(this)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
 
         }
-        fun onCreateOptionsMenu(menu: Menu?): Boolean {
+       override fun onCreateOptionsMenu(menu: Menu?): Boolean {
             menuInflater.inflate(R.menu.menu_main, menu)
             return true
         }
 
-        fun onOptionsItemSelected(item: MenuItem): Boolean {
+       override fun onOptionsItemSelected(item: MenuItem): Boolean {
             when (item.itemId) {
                 R.id.resertMenuMain -> {
                     firstOperandET.text.clear()
                     secondOperandET.text.clear()
-
                     resultTV.text = "Результат"
 
                     resultTV.setTextColor(this.getResources().getColor(R.color.input))
@@ -82,9 +76,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             return super.onOptionsItemSelected(item)
         }
-    }
 
-    // @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(view: View) {
         if (firstOperandET.text.isEmpty() || secondOperandET.text.isEmpty()) {
             return
@@ -106,10 +98,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             Toast.LENGTH_LONG
         ).show()
     }
-
-    //textview.setTextColor(this.getResources().getColor(R.color.RED))
-
 }
+
+
+
 //
 //1.      Добавить Toolbar с логотипом, заголовком и подзаголовком. Цвет Toolbar: #006400
 //
